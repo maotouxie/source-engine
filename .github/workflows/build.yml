@@ -76,9 +76,12 @@ jobs:
         ./waf.bat configure -T release
         ./waf.bat build
         ls -la
-        rm -r .\build\*\*.o .\build\*\*.pdb
-        rm -r .\build\*\*\*.o .\build\*\*\*.pdb
-        rm -r .\build\*\*\*\*.o .\build\*\*\*\*.pdb
+        rm -r .\build\*\*.o
+        rm -r .\build\*\*.pdb
+        rm -r .\build\*\*\*.o
+        rm -r .\build\*\*\*.pdb
+        rm -r .\build\*\*\*\*.o
+        rm -r .\build\*\*\*\*.pdb
         choco install zip
         zip -r build-windows-i386.zip build
     - uses: actions/upload-artifact@v2
