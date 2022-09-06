@@ -96,6 +96,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build dedicated linux-i386
       run: |
+        sudo chmod 777 scripts/build-ubuntu-i386-ded.sh
         scripts/build-ubuntu-i386-ded.sh -d
 
   build-dedicated-linux-amd64:
@@ -105,4 +106,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build dedicated linux-amd64
       run: |
+        sudo chmod 777 scripts/build-ubuntu-amd64-ded.sh
         scripts/build-ubuntu-amd64-ded.sh -d
