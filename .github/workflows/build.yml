@@ -17,12 +17,9 @@ jobs:
     - name: Build linux-i386
       run: |
         scripts/build-ubuntu-i386.sh
-        rm -r build/*/*.o
-        rm -r build/*/*.pdb
-        rm -r build/*/*/*.o
-        rm -r build/*/*/*.pdb
-        rm -r build/*/*/*/*.o
-        rm -r build/*/*/*/*.pdb
+        rm -r build/*/*.o build/*/*.pdb
+        rm -r build/*/*/*.o build/*/*/*.pdb
+        rm -r build/*/*/*/*.o build/*/*/*/*.pdb
         zip -r build-linux-i386.zip build
     - uses: actions/upload-artifact@v2
       with:
@@ -37,12 +34,9 @@ jobs:
     - name: Build linux-amd64
       run: |
         scripts/build-ubuntu-amd64.sh
-        rm -r build/*/*.o
-        rm -r build/*/*.pdb
-        rm -r build/*/*/*.o
-        rm -r build/*/*/*.pdb
-        rm -r build/*/*/*/*.o
-        rm -r build/*/*/*/*.pdb
+        rm -r build/*/*.o build/*/*.pdb
+        rm -r build/*/*/*.o build/*/*/*.pdb
+        rm -r build/*/*/*/*.o build/*/*/*/*.pdb
         zip -r build-linux-amd64.zip build
     - uses: actions/upload-artifact@v2
       with:
@@ -57,12 +51,9 @@ jobs:
     - name: Build android-armv7a
       run: |
         scripts/build-android-armv7a.sh
-        rm -r build/*/*.o
-        rm -r build/*/*.pdb
-        rm -r build/*/*/*.o
-        rm -r build/*/*/*.pdb
-        rm -r build/*/*/*/*.o
-        rm -r build/*/*/*/*.pdb
+        rm -r build/*/*.o build/*/*.pdb
+        rm -r build/*/*/*.o build/*/*/*.pdb
+        rm -r build/*/*/*/*.o build/*/*/*/*.pdb
         zip -r build-android-armv7a.zip build
     - uses: actions/upload-artifact@v2
       with:
@@ -81,12 +72,9 @@ jobs:
         # ./waf.bat build
         ./waf.bat configure -T release
         ./waf.bat build
-        rm -r .\build\*\*.o
-        rm -r .\build\*\*.pdb
-        rm -r .\build\*\*\*.o
-        rm -r .\build\*\*\*.pdb
-        rm -r .\build\*\*\*\*.o
-        rm -r .\build\*\*\*\*.pdb
+        rm -r .\build\*\*.o .\build\*\*.pdb
+        rm -r .\build\*\*\*.o .\build\*\*\*.pdb
+        rm -r .\build\*\*\*\*.o .\build\*\*\*\*.pdb
         choco install zip
         zip -r build-windows-i386.zip build
     - uses: actions/upload-artifact@v2
