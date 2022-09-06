@@ -18,9 +18,9 @@ jobs:
       run: |
         scripts/build-ubuntu-i386.sh
         ls -la
-        rm -r build/*/*.o build/*/*.pdb
-        rm -r build/*/*/*.o build/*/*/*.pdb
-        rm -r build/*/*/*/*.o build/*/*/*/*.pdb
+        rm -r ./build/*/*.o ./build/*/*.pdb
+        rm -r ./build/*/*/*.o ./build/*/*/*.pdb
+        rm -r ./build/*/*/*/*.o ./build/*/*/*/*.pdb
         zip -r build-linux-i386.zip build
     - uses: actions/upload-artifact@v2
       with:
@@ -36,9 +36,9 @@ jobs:
       run: |
         scripts/build-ubuntu-amd64.sh
         ls -la
-        rm -r build/*/*.o build/*/*.pdb
-        rm -r build/*/*/*.o build/*/*/*.pdb
-        rm -r build/*/*/*/*.o build/*/*/*/*.pdb
+        rm -r ./build/*/*.o ./build/*/*.pdb
+        rm -r ./build/*/*/*.o ./build/*/*/*.pdb
+        rm -r ./build/*/*/*/*.o ./build/*/*/*/*.pdb
         zip -r build-linux-amd64.zip build
     - uses: actions/upload-artifact@v2
       with:
@@ -54,9 +54,9 @@ jobs:
       run: |
         scripts/build-android-armv7a.sh
         ls -la
-        rm -r build/*/*.o build/*/*.pdb
-        rm -r build/*/*/*.o build/*/*/*.pdb
-        rm -r build/*/*/*/*.o build/*/*/*/*.pdb
+        rm -r ./build/*/*.o ./build/*/*.pdb
+        rm -r ./build/*/*/*.o ./build/*/*/*.pdb
+        rm -r ./build/*/*/*/*.o ./build/*/*/*/*.pdb
         zip -r build-android-armv7a.zip build
     - uses: actions/upload-artifact@v2
       with:
