@@ -17,6 +17,7 @@ jobs:
     - name: Build linux-i386
       run: |
         scripts/build-ubuntu-i386.sh
+        ls -la
         rm -r build/*/*.o build/*/*.pdb
         rm -r build/*/*/*.o build/*/*/*.pdb
         rm -r build/*/*/*/*.o build/*/*/*/*.pdb
@@ -34,6 +35,7 @@ jobs:
     - name: Build linux-amd64
       run: |
         scripts/build-ubuntu-amd64.sh
+        ls -la
         rm -r build/*/*.o build/*/*.pdb
         rm -r build/*/*/*.o build/*/*/*.pdb
         rm -r build/*/*/*/*.o build/*/*/*/*.pdb
@@ -51,6 +53,7 @@ jobs:
     - name: Build android-armv7a
       run: |
         scripts/build-android-armv7a.sh
+        ls -la
         rm -r build/*/*.o build/*/*.pdb
         rm -r build/*/*/*.o build/*/*/*.pdb
         rm -r build/*/*/*/*.o build/*/*/*/*.pdb
@@ -72,6 +75,7 @@ jobs:
         # ./waf.bat build
         ./waf.bat configure -T release
         ./waf.bat build
+        ls -la
         rm -r .\build\*\*.o .\build\*\*.pdb
         rm -r .\build\*\*\*.o .\build\*\*\*.pdb
         rm -r .\build\*\*\*\*.o .\build\*\*\*\*.pdb
