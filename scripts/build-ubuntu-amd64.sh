@@ -7,4 +7,4 @@ sudo apt-get install -f -y libopenal-dev g++-multilib gcc-multilib libpng-dev li
 # ./waf configure -T debug --64bits --disable-warns $* &&
 # ./waf build
 ./waf configure -T release --64bits --disable-warns $* &&
-./waf install # this automatically will install all libraries
+./waf build

@@ -8,4 +8,4 @@ sudo apt-get install -f -y libopenal-dev:i386 g++-multilib gcc-multilib libpng-d
 # PKG_CONFIG_PATH=/usr/lib/i386-linux-gnu/pkgconfig ./waf configure -T debug --disable-warns $* &&
 # ./waf build
 PKG_CONFIG_PATH=/usr/lib/i386-linux-gnu/pkgconfig ./waf configure -T release --disable-warns $* &&
-./waf install # this automatically will install all libraries
+./waf build
