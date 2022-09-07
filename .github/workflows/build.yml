@@ -72,9 +72,9 @@ jobs:
     - name: Build windows-i386
       run: |
         git submodule init && git submodule update
-        # ./waf.bat configure -T debug
+        # ./waf.bat configure -T release
         # ./waf.bat build
-        ./waf.bat configure -T release
+        ./waf.bat configure -T debug
         ./waf.bat build
         rm -r .\build\*\*.o
         rm -r .\build\*\*.pdb
@@ -107,7 +107,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build dedicated linux-i386
       run: |
-        sudo chmod 777 scripts/build-ubuntu-i386-ded.sh
+        sudo chmod 777 scripts/build-ubuntu-i386.sh
         scripts/build-ubuntu-i386-ded.sh -d
 
   build-dedicated-linux-amd64:
@@ -117,5 +117,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build dedicated linux-amd64
       run: |
-        sudo chmod 777 scripts/build-ubuntu-amd64-ded.sh
+        sudo chmod 777 scripts/build-ubuntu-amd64.sh
         scripts/build-ubuntu-amd64-ded.sh -d
