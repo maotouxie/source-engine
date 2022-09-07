@@ -57,6 +57,7 @@ jobs:
         rm -rf ./build/*/*.o ./build/*/*.pdb
         rm -rf ./build/*/*/*.o ./build/*/*/*.pdb
         rm -rf ./build/*/*/*/*.o ./build/*/*/*/*.pdb
+        rm -f android*.zip
         zip -r build-android-armv7a.zip build
     - uses: actions/upload-artifact@v2
       with:
