@@ -76,8 +76,8 @@ jobs:
         # ./waf.bat build
         ./waf.bat configure -T debug
         ./waf.bat build
-        del .\build\*.o /s
-        del .\build\*.pdb /s
+        Remove-Item -Path .\build\* -Include *.o -Recurse -Force
+        Remove-Item -Path .\build\* -Include *.pdb -Recurse -Force
         robocopy ".\build" ".\build" /S /move
         choco install zip
         zip -r build-windows-i386.zip build
