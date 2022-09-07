@@ -23,6 +23,7 @@ jobs:
         rm -rf ./build/*/*/*/*.o ./build/*/*/*/*.pdb
         rm -rf ./build/*/*/*/*/*.o ./build/*/*/*/*/*.pdb
         rm -rf ./build/*/*/*/*/*/*.o ./build/*/*/*/*/*/*.pdb
+        find ./build -type d -empty -delete
         zip -r build-linux-i386.zip build
     - uses: actions/upload-artifact@v2
       with:
@@ -43,6 +44,7 @@ jobs:
         rm -rf ./build/*/*/*/*.o ./build/*/*/*/*.pdb
         rm -rf ./build/*/*/*/*/*.o ./build/*/*/*/*/*.pdb
         rm -rf ./build/*/*/*/*/*/*.o ./build/*/*/*/*/*/*.pdb
+        find ./build -type d -empty -delete
         zip -r build-linux-amd64.zip build
     - uses: actions/upload-artifact@v2
       with:
@@ -63,6 +65,7 @@ jobs:
         rm -rf ./build/*/*/*/*.o ./build/*/*/*/*.pdb
         rm -rf ./build/*/*/*/*/*.o ./build/*/*/*/*/*.pdb
         rm -rf ./build/*/*/*/*/*/*.o ./build/*/*/*/*/*/*.pdb
+        find ./build -type d -empty -delete
         rm -f android*.zip
         zip -r build-android-armv7a.zip build
     - uses: actions/upload-artifact@v2
@@ -92,6 +95,7 @@ jobs:
         rm -r .\build\*\*\*\*\*.pdb
         rm -r .\build\*\*\*\*\*\*.o
         rm -r .\build\*\*\*\*\*\*.pdb
+        robocopy ".\build" ".\build" /S /move
         choco install zip
         zip -r build-windows-i386.zip build
     - uses: actions/upload-artifact@v2
