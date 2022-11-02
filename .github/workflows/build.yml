@@ -101,7 +101,7 @@ jobs:
         Get-ChildItem -Recurse -Filter "*.dll" | Move-Item -Force -Verbose -Destination .\build1\bin
         Get-ChildItem -Recurse -Filter "client.dll" | Move-Item -Force -Verbose -Destination .\build1\game\bin
         Get-ChildItem -Recurse -Filter "server.dll" | Move-Item -Force -Verbose -Destination .\build1\game\bin
-        Get-ChildItem -Recurse -Filter "*.exe" | Move-Item -Force -Verbose -Destination .\build1
+        Get-ChildItem -Recurse -Filter "*launcher.exe" | Move-Item -Force -Verbose -Destination .\build1
         Remove-item .\build -Recurse -Force
         ren .\build1 .\build
         robocopy ".\build" ".\build" /S /move
