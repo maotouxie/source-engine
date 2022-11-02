@@ -22,9 +22,9 @@ jobs:
         mkdir ./build1/bin
         mkdir ./build1/game
         mkdir ./build1/game/bin
-        find ./build -name "*.dll" -exec mv -t ./build1/bin {} +
-        find ./build -name "client.dll" -exec mv -t ./build1/game/bin {} +
-        find ./build -name "server.dll" -exec mv -t ./build1/game/bin {} +
+        find ./build -name "*.so" -exec mv -t ./build1/bin {} +
+        find ./build -name "libclient.so" -exec mv -t ./build1/game/bin {} +
+        find ./build -name "libserver.so" -exec mv -t ./build1/game/bin {} +
         find ./build -name "*_launcher" -exec mv -t ./build1 {} +
         rm -rf build
         mv ./build1 ./build
@@ -47,9 +47,9 @@ jobs:
         mkdir ./build1/bin
         mkdir ./build1/game
         mkdir ./build1/game/bin
-        find ./build -name "*.dll" -exec mv -t ./build1/bin {} +
-        find ./build -name "client.dll" -exec mv -t ./build1/game/bin {} +
-        find ./build -name "server.dll" -exec mv -t ./build1/game/bin {} +
+        find ./build -name "*.so" -exec mv -t ./build1/bin {} +
+        find ./build -name "libclient.so" -exec mv -t ./build1/game/bin {} +
+        find ./build -name "libserver.so" -exec mv -t ./build1/game/bin {} +
         find ./build -name "*_launcher" -exec mv -t ./build1 {} +
         rm -rf build
         mv ./build1 ./build
@@ -73,10 +73,9 @@ jobs:
         mkdir ./build1/bin
         mkdir ./build1/game
         mkdir ./build1/game/bin
-        find ./build -name "*.dll" -exec mv -t ./build1/bin {} +
-        find ./build -name "client.dll" -exec mv -t ./build1/game/bin {} +
-        find ./build -name "server.dll" -exec mv -t ./build1/game/bin {} +
-        find ./build -name "*_launcher" -exec mv -t ./build1 {} +
+        find ./build -name "*.so" -exec mv -t ./build1/bin {} +
+        find ./build -name "libclient.so" -exec mv -t ./build1/game/bin {} +
+        find ./build -name "libserver.so" -exec mv -t ./build1/game/bin {} +
         rm -rf build
         mv ./build1 ./build
     - uses: actions/upload-artifact@v2
