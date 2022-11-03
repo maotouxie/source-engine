@@ -22,10 +22,10 @@ jobs:
         mkdir ./build1/bin
         mkdir ./build1/game
         mkdir ./build1/game/bin
-        find . -name "*.so" -exec mv -t ./build1/bin {} +
-        find . -name "libclient.so" -exec mv -t ./build1/game/bin {} +
-        find . -name "libserver.so" -exec mv -t ./build1/game/bin {} +
-        find . -name "*_launcher" -exec mv -t ./build1 {} +
+        find ./build -name "*.so" -exec mv -t ./build1/bin {} +
+        find ./build1 -name "libclient.so" -exec mv -t ./build1/game/bin {} +
+        find ./build1 -name "libserver.so" -exec mv -t ./build1/game/bin {} +
+        find ./build -name "*_launcher" -exec mv -t ./build1 {} +
         rm -rf build
         mv ./build1 ./build
     - uses: actions/upload-artifact@v2
@@ -47,10 +47,10 @@ jobs:
         mkdir ./build1/bin
         mkdir ./build1/game
         mkdir ./build1/game/bin
-        find . -name "*.so" -exec mv -t ./build1/bin {} +
-        find . -name "libclient.so" -exec mv -t ./build1/game/bin {} +
-        find . -name "libserver.so" -exec mv -t ./build1/game/bin {} +
-        find . -name "*_launcher" -exec mv -t ./build1 {} +
+        find ./build -name "*.so" -exec mv -t ./build1/bin {} +
+        find ./build1 -name "libclient.so" -exec mv -t ./build1/game/bin {} +
+        find ./build1 -name "libserver.so" -exec mv -t ./build1/game/bin {} +
+        find ./build -name "*_launcher" -exec mv -t ./build1 {} +
         rm -rf build
         mv ./build1 ./build
     - uses: actions/upload-artifact@v2
@@ -73,9 +73,9 @@ jobs:
         mkdir ./build1/bin
         mkdir ./build1/game
         mkdir ./build1/game/bin
-        find . -name "*.so" -exec mv -t ./build1/bin {} +
-        find . -name "libclient.so" -exec mv -t ./build1/game/bin {} +
-        find . -name "libserver.so" -exec mv -t ./build1/game/bin {} +
+        find ./build -name "*.so" -exec mv -t ./build1/bin {} +
+        find ./build1 -name "libclient.so" -exec mv -t ./build1/game/bin {} +
+        find ./build1 -name "libserver.so" -exec mv -t ./build1/game/bin {} +
         rm -rf build
         mv ./build1 ./build
     - uses: actions/upload-artifact@v2
