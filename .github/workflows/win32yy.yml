@@ -20,7 +20,7 @@ jobs:
         
         git submodule init;git submodule update
         #sudo apt update;sudo apt upgrade;sudo apt-get install -f -y gdb libopenal-dev g++-multilib gcc-multilib libpng-dev libjpeg-dev libfreetype6-dev libfontconfig1-dev libcurl4-gnutls-dev libsdl2-dev zlib1g-dev libbz2-dev libedit-dev
-        ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=hl2 
+        ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=hl2 --use-opus
         ./waf.bat install -j4
         ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=hl1mp
         ./waf.bat install -j4 --target=client,server
