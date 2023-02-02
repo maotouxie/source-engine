@@ -1,3 +1,4 @@
+#不要翻译代码编辑页面，不然后悔
 name: win-test
 
 on:
@@ -22,15 +23,15 @@ jobs:
         mkdir win/hl1mp
         mkdir win/cstrike
         git submodule init;git submodule update
-        waf.bat configure -T release -8 --prefix=win/cstrike --disable-warns --build-game=cstrike 
-        waf.bat install --target=server -j4
-        waf.bat configure -T release -8 --prefix=win/hl2mp --disable-warns --build-game=hl2mp 
-        waf.bat install --target=server -j4
-        waf.bat configure -T release -8 --prefix=win/hl1 --disable-warns --build-game=hl1 
-        waf.bat install --target=server -j4
-        waf.bat configure -T release -8 --prefix=win/hl1mp --disable-warns --build-game=hl1mp
+        ./waf.bat configure -T release -8 --prefix=win/cstrike --disable-warns --build-game=cstrike 
+        ./waf.bat install --target=server -j4
+        ./waf.bat configure -T release -8 --prefix=win/hl2mp --disable-warns --build-game=hl2mp 
+        ./waf.bat install --target=server -j4
+        ./waf.bat configure -T release -8 --prefix=win/hl1 --disable-warns --build-game=hl1 
+        ./waf.bat install --target=server -j4
+        ./waf.bat configure -T release -8 --prefix=win/hl1mp --disable-warns --build-game=hl1mp
         #test hldms
-        waf.bat install --target=server -j4
+        ./waf.bat install --target=server -j4
         #mv win/lib win/cstrike
         # cat build/config.log >win/info.txt
         
@@ -49,8 +50,8 @@ jobs:
       run: |
         mkdir win
         git submodule init;git submodule update
-        waf.bat configure -T release -8 --prefix=win --disable-warns -d
-        waf.bat install -j4
+        ./waf.bat configure -T release -8 --prefix=win --disable-warns -d
+        ./waf.bat install -j4
         # cat build/config.log > win/info.txt
     - uses: actions/upload-artifact@v3
       with:
@@ -71,15 +72,15 @@ jobs:
         mkdir win/hl1mp
         mkdir win/cstrike
         git submodule init;git submodule update
-        waf.bat configure -T release --prefix=win/cstrike --disable-warns --build-game=cstrike 
-        waf.bat install --target=server -j4
-        waf.bat configure -T release --prefix=win/hl2mp --disable-warns --build-game=hl2mp 
-        waf.bat install --target=server -j4
-        waf.bat configure -T release --prefix=win/hl1 --disable-warns --build-game=hl1 
-        waf.bat install --target=server -j4
-        waf.bat configure -T release  -prefix=win/hl1mp --disable-warns --build-game=hl1mp
+        ./waf.bat configure -T release --prefix=win/cstrike --disable-warns --build-game=cstrike 
+        ./waf.bat install --target=server -j4
+        ./waf.bat configure -T release --prefix=win/hl2mp --disable-warns --build-game=hl2mp 
+        ./waf.bat install --target=server -j4
+        ./waf.bat configure -T release --prefix=win/hl1 --disable-warns --build-game=hl1 
+        ./waf.bat install --target=server -j4
+        ./waf.bat configure -T release  -prefix=win/hl1mp --disable-warns --build-game=hl1mp
         #test hldms
-        waf.bat install --target=server -j4
+        ./waf.bat install --target=server -j4
         #mv win/lib win/cstrike
         # cat build/config.log >win/info.txt
         
@@ -98,8 +99,8 @@ jobs:
       run: |
         mkdir win
         git submodule init;git submodule update
-        waf.bat configure -T release --prefix=win --disable-warns -d
-        waf.bat install -j4
+        ./waf.bat configure -T release --prefix=win --disable-warns -d
+        ./waf.bat install -j4
         # cat build/config.log > win/info.txt
     - uses: actions/upload-artifact@v3
       with:
