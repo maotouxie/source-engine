@@ -19,7 +19,7 @@ jobs:
       run: |
         mkdir win
         mkdir win/hl2mp
-        mkdir win/hl1
+        mkdir win/dod
         mkdir win/hl1mp
         mkdir win/cstrike
         git submodule init;git submodule update
@@ -27,7 +27,7 @@ jobs:
         ./waf.bat install --target=server -j4
         ./waf.bat configure -T release -8 --prefix=win/hl2mp --disable-warns --build-game=hl2mp 
         ./waf.bat install --target=server -j4
-        ./waf.bat configure -T release -8 --prefix=win/hl1 --disable-warns --build-game=hl1 
+        ./waf.bat configure -T release -8 --prefix=win/hl1 --disable-warns --build-game=dod
         ./waf.bat install --target=server -j4
         ./waf.bat configure -T release -8 --prefix=win/hl1mp --disable-warns --build-game=hl1mp
         #test hldms
@@ -49,9 +49,9 @@ jobs:
     - name: build
       run: |
         mkdir win
-        git submodule init;git submodule update
+        #git submodule init;git submodule update
         ./waf.bat configure -T release -8 --prefix=win --disable-warns -d
-        ./waf.bat install -j4
+        ./waf.bat install
         # cat build/config.log > win/info.txt
     - uses: actions/upload-artifact@v3
       with:
@@ -68,7 +68,7 @@ jobs:
       run: |
         mkdir win
         mkdir win/hl2mp
-        mkdir win/hl1
+        mkdir win/dod
         mkdir win/hl1mp
         mkdir win/cstrike
         git submodule init;git submodule update
@@ -76,7 +76,7 @@ jobs:
         ./waf.bat install --target=server -j4
         ./waf.bat configure -T release --prefix=win/hl2mp --disable-warns --build-game=hl2mp 
         ./waf.bat install --target=server -j4
-        ./waf.bat configure -T release --prefix=win/hl1 --disable-warns --build-game=hl1 
+        ./waf.bat configure -T release --prefix=win/hl1 --disable-warns --build-game=dod
         ./waf.bat install --target=server -j4
         ./waf.bat configure -T release  -prefix=win/hl1mp --disable-warns --build-game=hl1mp
         #test hldms
@@ -98,9 +98,9 @@ jobs:
     - name: build
       run: |
         mkdir win
-        git submodule init;git submodule update
+        #git submodule init;git submodule update
         ./waf.bat configure -T release --prefix=win --disable-warns -d
-        ./waf.bat install -j4
+        ./waf.bat install
         # cat build/config.log > win/info.txt
     - uses: actions/upload-artifact@v3
       with:
