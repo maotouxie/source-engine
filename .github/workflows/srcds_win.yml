@@ -49,8 +49,8 @@ jobs:
     - name: build
       run: |
         mkdir win
-        #git submodule init;git submodule update
-        ./waf.bat configure -T release -8 --prefix=win --disable-warns -d
+        dir
+        ./waf.bat configure -T debug -8 --prefix=win --disable-warns -d
         ./waf.bat install
         # cat build/config.log > win/info.txt
     - uses: actions/upload-artifact@v3
@@ -98,7 +98,7 @@ jobs:
     - name: build
       run: |
         mkdir win
-        #git submodule init;git submodule update
+        dir
         ./waf.bat configure -T release --prefix=win --disable-warns -d
         ./waf.bat install
         # cat build/config.log > win/info.txt
