@@ -1,4 +1,4 @@
-name: andriod-test
+name: srcds-test
 
 on:
   push:
