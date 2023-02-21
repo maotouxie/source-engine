@@ -1,0 +1,139 @@
+
+name: build_win32_all
+
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+
+#Source Engine build
+jobs:
+  build-srceng-win-32bit:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build-32
+      run: |
+        
+        git submodule init;git submodule update
+        ./waf.bat configure -T release --prefix=./win --disable-warns
+        ./waf.bat install -j4
+        cat build/config.log >./win/info.txt
+        
+    - uses: actions/upload-artifact@v3
+      with:
+        name: srceng-win32
+        path: ./win
+        if-no-files-found: error
+
+
+  build-srceng-win-64bit:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build-64
+      run: |
+        git submodule init;git submodule update
+        ./waf.bat configure -T release --prefix=./win --disable-warns
+        
+        ./waf.bat install -j4
+        cat build/config.log > ./win/info.txt
+    - uses: actions/upload-artifact@v3
+      with:
+        name: srceng-win64
+        path: ./win
+        if-no-files-found: error
+
+#Dedicated server build
+  build-dedicated-win-32bit:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build-32
+      run: |
+        
+        git submodule init;git submodule update
+        ./waf.bat configure -T debug --prefix=./win --disable-warns -d
+        ./waf.bat install -j4
+        cat build/config.log >./win/info.txt
+        
+    - uses: actions/upload-artifact@v3
+      with:
+        name: srcds-win32
+        path: ./win
+        if-no-files-found: error
+
+
+  build-dedicated-win-64bit:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build-64
+      run: |
+        git submodule init;git submodule update
+        ./waf.bat configure -T debug --prefix=./win --disable-warns -d
+        
+        ./waf.bat install -j4
+        cat build/config.log > ./win/info.txt
+    - uses: actions/upload-artifact@v3
+      with:
+        name: srcds-win64
+        path: ./win
+        if-no-files-found: error
+
+#Client server build for other games
+  build-mod-win-32bit:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build-32
+      run: |
+        
+        git submodule init;git submodule update
+        ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=cstrike 
+        ./waf.bat install -j4 --target=client,server
+        ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=hl2mp
+        ./waf.bat install -j4 --target=client,server
+        ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=episodic
+        ./waf.bat install -j4 --target=client,server
+        ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=dod
+        ./waf.bat install -j4 --target=server,client
+        cat build/config.log >./win/info.txt
+        
+    - uses: actions/upload-artifact@v3
+      with:
+        name: cstrike,hl2mp,episodic,dod-win32
+        path: ./win
+        if-no-files-found: error
+
+
+  build-mod-win-64bit:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build-64
+      run: |
+        git submodule init;git submodule update
+        ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=cstrike -8
+        ./waf.bat install -j4 --target=client,server
+        ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=hl2mp -8
+        ./waf.bat install -j4 --target=client,server
+        ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=episodic -8
+        ./waf.bat install -j4 --target=client,server
+        ./waf.bat configure -T release --prefix=./win --disable-warns --build-game=dod -8
+        ./waf.bat install -j4 --target=server,client
+        cat build/config.log > ./win/info.txt
+    - uses: actions/upload-artifact@v3
+      with:
+        name: cstrike,hl2mp,episodic,dod-win64
+        path: ./win
+        if-no-files-found: error
