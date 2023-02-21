@@ -1,0 +1,51 @@
+name: build_win32scrds
+
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+
+#Source Engine build
+jobs:
+  build-srceng-win-32bit:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build-32
+      run: |
+        
+        git submodule init;git submodule update
+        ./waf.bat configure -T release --prefix=./win --disable-warns
+        ./waf.bat install -j4
+        cat build/config.log >./win/info.txt
+        
+    - uses: actions/upload-artifact@v3
+      with:
+        name: srceng-win32
+        path: ./win
+        if-no-files-found: error
+
+
+#Dedicated server build
+  build-dedicated-win-32bit:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build-32
+      run: |
+        
+        git submodule init;git submodule update
+        ./waf.bat configure -T release --prefix=./win --disable-warns -d
+        ./waf.bat install -j4
+        cat build/config.log >./win/info.txt
+        
+    - uses: actions/upload-artifact@v3
+      with:
+        name: srcds-win32
+        path: ./win
+        if-no-files-found: error
